@@ -1,25 +1,8 @@
 <?php
 include('conexion.php');
-$id=$_GET["cod"];
-$result=mysqli_query($conexion,"select * from docente where documento=$id") or die ("problemas en el select". mysqli_error(  $conexion));
-While ($row=mysqli_fetch_array($result)){
-	echo "";
-	$nombre=$row['nombre'];
+$id=$_GET["doc"];
+$result=mysqli_query($conexion,"delete  from docente where documento=$id") or die ("problemas en el select". mysqli_error(  $conexion));
 
-}
-
-
-echo"esta seguro que desea eliminar el registro " .$id. " con nombre " .$nombre;
-
+header("location:mostrardoce.php");
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
- <a href="confirmaeliminardocente.php?ced=<?php echo $_GET['cod'];?>"><br> SI ELIMINAR</a><br>
- <a href="mostrardatosdocente.php">NO ELIMINAR </a>
-</body>
-</html>

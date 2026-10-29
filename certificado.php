@@ -38,7 +38,7 @@ class PDF extends FPDF
         $pdf->cell(25,5,$reg["documento"],0,0,'C',0);
         $pdf->Write(5,', de La ceja Antioquia, se encuentra matriculado/a en el Centro Educativo DOMINIQUE, establecimiento privado.');
         $pdf->Cell(150);
-        $pdf->Write(15,'El valor a cancelar por pension es de: $452.490.');
+        $pdf->Write(15,'El valor a cancelar por pension es de: $452.200.');
         $pdf->Cell(0);
         $pdf->Write(15,'Se expide esta constancia a solicitud del interesado, en la fecha: ');
         $pdf->cell(20,15,$date,0,0,'C',0);

@@ -1,28 +1,71 @@
 <?php
-include('conexion.php');
-$result=mysqli_query($conexion,"select * from anecdatario;") or die ("problemas en el select".mysqli_error($conexion));
+require('Libreria/fpdf186/fpdf.php');
 
-
-
-echo "<table border='1'>";
-echo"<tr>";
-echo "<td>Fecha iniciacion de la ficha</td><td>Nombres completos</td><td>Documento</td><td>Fecha de nacimiento</td><td>Direccion de residencia</td><td>Nombre de la madre</td><td>Cedula</td><td>Contacto</td><td>Nombre del padre</td><td>Cedula</td><td>Contacto</td><td>Otro acudiente</td><td>Parentesco</td><td>Telefono</td><td>Docente</td><td>Grado</td><td>Año</td>";
-echo"<tr>";
-while($reg=mysqli_fetch_array($result)){
-    echo"<tr>";
-    echo "<td>".$reg['documento']."</td>";
-    echo "<td>".$reg['nombre']."</td>";
-    echo "<td>".$reg['apellidos']."</td>";
-    echo "<td>".$reg['sexo']."</td>";
-    echo "<td>".$reg['estadocivil']."</td>";
-    echo "<td>".$reg['fecha']."</td>";
-    echo "<td>".$reg['telefono']."</td>";
-    echo "<td>".$reg['correo']."</td>";
-
-
-    echo"<td><a href='eliminaracudiente.php?cod=$reg[documento]'>Eliminar</td>";
-    echo"<td><a href='modificaracudiente.php?doc=$reg[documento]'>Modificar</td>";
-    echo"<tr>";
+class PDF extends FPDF
+{
+// Cabecera de página
+function Header()   
+    {   
+    $this->Image("index2/imagenes/encabezadooo.jpg",37,10,150);
+    $this->SetFont('Arial','B',10); 
+{
+    // Arial bold 15
+    $this->SetFont('Arial','B',14);
+    // Movernos a la derecha
+    $this->Cell(80);
+    // Título
+    $this->Cell(30,80,'ANECDOTARIO DEL ALUMNO',2,0,'C');
+    // Salto de línea
+    $this->Ln(60);
 }
-echo"</table>";
+
+// Pie de página
+function Footer()
+{
+    // Posición: a 1,5 cm del final
+    $this->SetY(-10);
+    // Arial italic 8
+    $this->SetFont('Arial','I',-1);
+    // Número de página
+    $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+    
+}
+
+function EspecialChars($text)
+    {
+        return iconv('UTF-8', 'windows-1252', $text);
+    }
+}
+
+
+}
+$pdf = new PDF();
+$pdf->AddPage();
+
+
+$pdf->SetFont('Arial', 'B', 11);
+ 
+
+$cellWidth2 = 200;
+$cellWidth1 = 130;  // Ancho de cada celda
+$cellWidth = 30;  // Ancho de cada celda
+$cellHeight = 9; // Alto de cada celda
+$marginLeft = 15; // Margen izquierdo para la tabla
+$marginTop = 30;  // Margen superior para la tabla
+
+
+// Agregar encabezados de columna
+$pdf->SetX($marginLeft);
+$pdf->Cell($cellWidth, $cellHeight, 'FECHA', 1, 0, 'C');
+$pdf->Cell($cellWidth1, $cellHeight, 'COMPORTAMIENTOS ESPECIFICOS OBSERVADOS EN EL ALUMNO', 1, 0, 'C');
+$pdf->Cell($cellWidth, $cellHeight, 'FIRMAS', 1, 0, 'C');
+
+//SetFillColor()
+
+
+
+
+
+    
+$pdf->Output();
 ?>

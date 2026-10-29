@@ -3,7 +3,8 @@
   $user=$_POST["usuario"];
   $password=$_POST["password"];
   $secretario=mysqli_query($conexion, "select * from secretario where documento='$user' && password='$password'");
-  $acudiente=mysqli_query($conexion, "select * from acudiente where documento='$user' && password='$password' ");
+  $mama=mysqli_query($conexion, "select * from mama where documentom='$user' && passwordm='$password' ");
+  $papa=mysqli_query($conexion, "select * from papa where documentop='$user' && passwordp='$password' ");
   $docente=mysqli_query($conexion, "select * from docente where documento='$user' && password='$password' ");
   $estudiante=mysqli_query($conexion, "select * from estudiante where documento='$user' && password='$password' ");
 
@@ -15,17 +16,27 @@
    session_start();
    $_SESSION['nombre']="$nombre";
    $_SESSION['documento']="$documento";
-   header("location:bienvenidoadmin.html");
+   header("location:bienvenidoadmin.php");
 
-  }elseif(mysqli_num_rows($acudiente)>0){
-   $fila=mysqli_fetch_row($acudiente);
-   $nombre=$fila[2];
-   $documento=$fila[0];
+  }elseif(mysqli_num_rows($mama)>0){
+   $fila=mysqli_fetch_row($mama);
+   $nombrem=$fila[2];
+   $documentom=$fila[0];
 
    session_start();
-   $_SESSION['nombre']="$nombre";
-   $_SESSION['documento']="$documento";
-   header("location:welcaces.html");
+   $_SESSION['nombrem']="$nombrem";
+   $_SESSION['documentom']="$documentom";
+   header("location:bienvenidoacudiente.php");
+
+  }elseif(mysqli_num_rows($papa)>0){
+   $fila=mysqli_fetch_row($papa);
+   $nombrep=$fila[2];
+   $documentop=$fila[0];
+
+   session_start();
+   $_SESSION['nombrep']="$nombrep";
+   $_SESSION['documentop']="$documentop";
+   header("location:bienvenidoacudiente.php");
 
   }elseif(mysqli_num_rows($docente)>0){
    $fila=mysqli_fetch_row($docente);
@@ -35,7 +46,7 @@
    session_start();
    $_SESSION['nombre']="$nombre";
    $_SESSION['documento']="$documento";
-   header("location:admin1.php");
+   header("location:bienvenidodocente.php");
 
   }elseif(mysqli_num_rows($estudiante)>0){
    $fila=mysqli_fetch_row($estudiante);
@@ -45,7 +56,7 @@
    session_start();
    $_SESSION['nombre']="$nombre";
    $_SESSION['documento']="$documento";
-   header("location:welcaces.html");
+   header("location:bienvenidoestudiante.php");
   }else{
     header("location:login1.html");
   }
