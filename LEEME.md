@@ -20,4 +20,4 @@
 ## Notas
 
 - Eliminar una madre, un padre o un grado **elimina en cascada** a los estudiantes asociados (así estaban definidas las llaves foráneas de tu base); el sistema te avisa antes de confirmar.
-- Las tablas `usuarios`, `informe` y `rector` no se usan en esta versión.
+- Los datos que estan en datos_prueba.sql son completamente ficticios.
