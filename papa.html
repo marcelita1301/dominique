@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papa</title>
+    <link rel="stylesheet" href="cssform2.css">
+    <link href="imagenes/imagencorporativa.jpg">
+    <link href="index2/imagenes/imagencorporativa.jpg" rel="icon">
+    <script src="javaform2.js"></script>
+</head>
+<body>
+    
+ <h1>Padre</h1>
+ <form action="papa.php" method="POST">
+<section>
+  <p>Información Personal</p>
+  <input type="number" placeholder="Documento" name="documentop" required/>
+  <input type="password" placeholder="Password" name="passwordp" required/>
+  <input type="text" placeholder="Nombre" name="nombrep" required/>
+  <input type="text" placeholder="Apellidos" name="apellidosp" required />
+  <select placeholder="Sexo" name="sexop" required>
+    <option disabled hidden selected value="sexo">Sexo</option>
+    <option value="femenino">Femenino</option>
+    <option value="masculino">Masculino</option>
+    <option value="nobinario">No binario</option>
+  </select>
+  <select placeholder="Estado civil" name="estadocivilp" required>
+    <option disabled hidden selected value="estadocivil">Estado civil</option>
+    <option value="soltero">Soltero/a</option>
+    <option value="casado">Casado/a</option>
+    <option value="separado">Separado/a</option>
+    <option value="unionlibre">Union libre</option>
+    <option value="divorciado">Divorciado/a</option>
+    <option value="viudo">Viudo/a</option>
+  </select>
+  <input type="date" placeholder="Fecha de nacimiento" name="fechap" required/>
+  <input type="text" placeholder="Lugar de expedicion" name="expedicionp" required />
+  <input type="text" placeholder="Lugar de nacimiento" name="lugarp" required />
+  <input type="text" placeholder="Direccion" name="direccionp" required/>
+  <input type="text" placeholder="Barrio" name="barriop" required/>
+  <input type="text" placeholder="Eps" name="epsp" required/>
+  <select placeholder="Tipo de sangre" name="rhp" required>
+    <option disabled hidden selected value="rh">Tipo de sangre</option>
+    <option value="AP">A+</option>
+    <option value="AN">A-</option>
+    <option value="BP">B+</option>
+    <option value="BN">B-</option>
+    <option value="ABN">AB-</option>
+    <option value="ABP">AB+</option>
+    <option value="ON">O-</option>
+    <option value="OP">O+</option>
+  </select>
+  <input type="text" placeholder="Profesion" name="profesionp" required/>
+  <input type="text" placeholder="Telefono" name="telefonop" required/>
+  <input type="email" placeholder="Correo" name="correop" required/>
+</section>
+
+<input type="submit" class="button" value="Enviar"></input>
+</form>
+</body>
+</html>

@@ -1,58 +1,37 @@
 <?php
-require"fpdf/fpdf.php";
-include("conexion.php");
-$date=date('d-m-Y');
-class PDF extends FPDF 
-{
-    function Header()   
-    {   
-    $this->Image("index2/imagenes/encabezadooo.jpg",37,10,150);
-    $this->SetFont('Arial','B',10);
-    //Movernos a la derecha
-    $this->Cell(80);
-    $this->Cell(30,67,'LA DIRECTORA DEL CENTRO EDUCATIVO DOMINIQUE',10,80,'C');
-    //Salto de linea
-    //$this->Cell(3);
-    $this->Cell(30,0,'HACE CONSTAR QUE',0,0,'C');
-    $this->Ln(20);
-    }
-    function Footer ()
-    {
-    $this->SetY(-15);
-    $this->SetFont('Arial','I',8);
-    $this->Cell(0,10,'Pagina'.$this->PageNo().'/{nb}',0,0,'C');
-    }
-}
-    
-    $pdf= new PDF();
-    $pdf->AliasNbPages();
-    $pdf->AddPage();
-    $pdf->SetFont('Arial','I',10);
-    $documento=$_POST["documento"];
-    $registros=mysqli_query($conexion,"select * from estudiante where documento='$documento'") or die ("problemas en el select".mysqli_error($conexion));
-    while ($reg=mysqli_fetch_array($registros)) {
-        $pdf->Write(5,'El/la estudiante: '); 
-        $pdf->cell(30,5,$reg["nombre"],0,0,'C',0);
-        $pdf->cell(25,5,$reg["apellidos"],0,0,'C',0);
-        $pdf->Write(5,', identificado/a con registro civil de nacimiento: ');
-        $pdf->cell(25,5,$reg["documento"],0,0,'C',0);
-        $pdf->Write(5,', de La ceja Antioquia, se encuentra matriculado/a en el Centro Educativo DOMINIQUE, establecimiento privado.');
-        $pdf->Cell(150);
-        $pdf->Write(15,'El valor a cancelar por pension es de: $452.490.');
-        $pdf->Cell(0);
-        $pdf->Write(15,'Se expide esta constancia a solicitud del interesado, en la fecha: ');
-        $pdf->cell(20,15,$date,0,0,'C',0);
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/pdf.php';
+requerir();
+$est = estudiante_solicitado();
 
-        
-        $pdf->Write(50,'Atentamente:');
-        $pdf->Image("index2/imagenes/imagenfirma.jpg",100,170,100);
-        $pdf->Cell(1);
-        $pdf->Write(95,'HERMANA ALBA LUCIA.');
-        
+$pdf = new DocPDF('P', 'mm', 'A4');
+$pdf->AliasNbPages();
+$pdf->SetMargins(25, 10, 25);
+$pdf->AddPage();
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 7, t('LA DIRECTORA DEL ' . NOMBRE_CENTRO), 0, 1, 'C');
+$pdf->Cell(0, 7, t('HACE CONSTAR QUE'), 0, 1, 'C');
+$pdf->Ln(8);
 
-    }
+$pdf->SetFont('Arial', '', 12);
+$nombre = trim($est['nombre'] . ' ' . $est['apellidos']);
+$texto = 'El/la estudiante ' . $nombre . ', identificado/a con documento de identidad No. ' . $est['documento']
+       . ', expedido en ' . $est['expedicion'] . ', se encuentra matriculado/a en el ' . ucwords(strtolower(NOMBRE_CENTRO))
+       . ', establecimiento privado de La Ceja, Antioquia, cursando el grado ' . $est['gnombre'] . '.';
+$pdf->MultiCell(0, 8, t($texto), 0, 'J');
+$pdf->Ln(4);
+$pdf->MultiCell(0, 8, t('El valor a cancelar por pensión mensual es de: $' . number_format(PENSION_VALOR, 0, ',', '.') . '.'), 0, 'J');
+$pdf->Ln(4);
+$pdf->MultiCell(0, 8, t('Se expide esta constancia a solicitud del interesado, el ' . fecha_larga() . '.'), 0, 'J');
+$pdf->Ln(12);
+$pdf->Cell(0, 8, t('Atentamente:'), 0, 1);
 
-    
-$pdf->Output();
+$firma = __DIR__ . '/index2/imagenes/imagenfirma.jpg';
+if (file_exists($firma)) $pdf->Image($firma, 25, $pdf->GetY() + 2, 90);
+$pdf->SetY($pdf->GetY() + 22);
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 8, t(NOMBRE_DIRECTORA), 0, 1);
+$pdf->SetFont('Arial', '', 11);
+$pdf->Cell(0, 6, t('Directora'), 0, 1);
 
-?>
+$pdf->Output('I', 'certificado_' . $est['documento'] . '.pdf');

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Acudientes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<link rel="stylesheet" href="forn.css">
+<body>
+
+</body>
+</html>
+<div class="signupFrm">
+    <form action="acudiente.php" class="form" method="post">
+      <h1 class="title">Acudientes</h1>
+
+     
+
+      <div class="inputContainer">
+        <input type="number" class="input" placeholder=" " name="documento" required>
+        <label for="documento" class="label">Documento</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="password" class="input" placeholder=" " name="password" required>
+        <label for="password" class="label">Contraseña</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder=" " name="nombre" required>
+        <label for="nombre" class="label">Nombre</label>
+      </div>
+	  <div class="inputContainer">
+        <input type="text" class="input" placeholder=" " name="apellidos"required>
+        <label for="apellidos" class="label">Apellidos</label>
+      </div>
+	  <div class="inputContainer">
+		<select name="sexo" class="input"placeholder=" " required>
+					<option disabled hidden selected>Sexo</option>
+					<option>Femenino</option>
+					<option>Masculino</option>
+					<option>No binario</option>
+				  </select>
+				<label for="sexo" class="label">Sexo </label>
+			  </div>
+		<div class="inputContainer">
+				<select name="estadocivil" class="input"placeholder=" " required>
+							<option disabled hidden selected>Estado civil</option>
+							<option>Casado/a</option>
+							<option>Soltero/a</option>
+							<option>Union libre</option>
+						  </select>
+						<label for="estadocivil" class="label">Estado civil</label>
+					  </div>
+		<div class="inputContainer">
+						<input type="date" class="input" placeholder=" " name="fecha" required>
+						<label for="fecha" class="label">Fecha de nacimiento</label>
+					  </div>
+					  <div class="inputContainer">
+						<input type="number" class="input" placeholder=" " name="telefono" required>
+						<label for="telefono" class="label">Telefono</label>
+					  </div>
+					  <div class="inputContainer">
+						<input type="email" class="input" placeholder=" " name="correo" required>
+						<label for="correo" class="label">Correo</label>
+					  </div>
+
+
+      <input type="submit" class="submitBtn" value="Enviar">
+    </form>
+  </div>
+</body>
+</head>
+</html>

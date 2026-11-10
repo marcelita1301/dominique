@@ -1,0 +1,70 @@
+:root{--rojo:#ee1e1e;--dorado:#cda45e;--oscuro:#0c0b09;--texto:#2b2926;--gris:#6b6760;--borde:#e6e1d8;--fondo:#faf8f4;--verde:#2e7d4f}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Open Sans",sans-serif;background:var(--fondo);color:var(--texto);line-height:1.55}
+a{color:var(--rojo);text-decoration:none}
+a:hover{color:#b81414}
+h1,h2,h3{font-family:"Playfair Display",serif}
+
+#cabecera{position:sticky;top:0;z-index:50;background:rgba(12,11,9,.92);border-bottom:1px solid #37332a}
+.cab-interior{max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.logo img{height:56px;width:56px;border-radius:50%;object-fit:cover;display:block}
+#cabecera nav{display:flex;flex-wrap:wrap;gap:2px 6px;flex:1}
+#cabecera nav a{color:#fff;padding:8px 12px;font-size:15px;border-radius:4px;transition:.2s}
+#cabecera nav a:hover{color:var(--rojo)}
+.pildora{border:2px solid #e9e9e3;color:#fff !important;border-radius:50px;padding:7px 20px;text-transform:uppercase;font-size:12px;letter-spacing:1px;font-weight:600;transition:.3s}
+.pildora:hover{background:#fff;color:var(--oscuro) !important}
+.menu-check{display:none}
+.menu-boton{display:none;color:#fff;font-size:26px;cursor:pointer;margin-left:auto}
+
+.banner{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url("../assets/img/jardin.niños2.jpg") center/cover;color:#fff;padding:44px 20px}
+.banner-interior{max-width:1100px;margin:0 auto}
+.banner h1{margin:0;font-size:2.2rem;font-weight:700;color:#fff}
+
+.contenido{max-width:1100px;margin:0 auto;padding:28px 20px 50px}
+h2{font-size:1.3rem;margin:.2rem 0 .8rem;color:var(--oscuro)}
+.tarjeta,.formulario{background:#fff;border:1px solid var(--borde);border-radius:10px;padding:18px 22px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.formulario{max-width:640px}
+.formulario label{display:block;margin-bottom:14px;font-weight:600;font-size:.93rem}
+input,select,textarea{display:block;width:100%;margin-top:4px;padding:9px 12px;border:1px solid #cfc8bb;border-radius:6px;font:inherit;background:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--dorado);border-color:var(--dorado)}
+.boton{display:inline-block;background:var(--rojo);color:#fff !important;border:0;border-radius:50px;padding:9px 22px;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer;margin:2px 4px 2px 0;transition:.2s}
+.boton:hover{background:#b81414}
+.boton.claro{background:#ece7dc;color:var(--texto) !important}
+.boton.claro:hover{background:#ddd6c6}
+.boton.peligro{background:#7a1c17}
+.pequeno-boton{padding:5px 14px;font-size:.82rem}
+.enlace{background:none;border:0;padding:0;font:inherit;cursor:pointer;color:var(--rojo)}
+.aviso{padding:10px 14px;border-radius:6px;margin-bottom:14px}
+.aviso.ok{background:#e3f4ea;border:1px solid #a9d9bd;color:#1d5c38}
+.aviso.error{background:#fbe6e4;border:1px solid #efb1ac;color:#8a2620}
+.pequeno{font-size:.88rem;color:var(--gris)}
+.herramientas{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:8px}
+.buscador{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.buscador input{margin-top:0;width:auto;min-width:220px}
+.tabla-caja{overflow-x:auto;background:#fff;border:1px solid var(--borde);border-radius:10px;margin-bottom:18px}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--borde);vertical-align:top}
+th{background:var(--oscuro);color:#fff;white-space:nowrap;font-weight:600}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#fbf6ea}
+.acciones a,.acciones .enlace{margin-right:12px;white-space:nowrap}
+a.peligro,.enlace.peligro{color:#a01c15}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:14px 0 20px}
+.dato{background:#fff;border:1px solid var(--borde);border-top:3px solid var(--dorado);border-radius:10px;padding:16px;color:var(--texto);display:block;transition:.2s}
+.dato b{display:block;font-family:"Playfair Display",serif;font-size:2rem;color:var(--rojo)}
+.dato:hover{box-shadow:0 4px 14px rgba(0,0,0,.1);color:var(--texto);transform:translateY(-2px)}
+.ficha{display:grid;grid-template-columns:200px 1fr;gap:6px 14px;margin:0 0 14px}
+.ficha dt{font-weight:600;color:var(--gris)}
+.ficha dd{margin:0}
+.etq{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.82rem;font-weight:600}
+.etq.ok{background:#e3f4ea;color:var(--verde)}
+.etq.mal{background:#fbe6e4;color:#a01c15}
+.pie{text-align:center;color:#d9d3c7;font-size:.85rem;padding:20px;background:var(--oscuro)}
+@media(max-width:860px){
+  .menu-boton{display:block}
+  #cabecera nav,.pildora{display:none;width:100%}
+  .menu-check:checked ~ nav{display:flex;flex-direction:column}
+  .menu-check:checked ~ .pildora{display:inline-block;width:auto}
+  .ficha{grid-template-columns:1fr}
+  .banner h1{font-size:1.7rem}
+}

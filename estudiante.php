@@ -12,11 +12,16 @@
   $barrio=$_POST["barrio"];
   $eps=$_POST["eps"];
   $rh=$_POST["rh"];
-  $acudiente=$_POST["acudiente"];
+  $mama=$_POST["mama"];
+  $papa=$_POST["papa"];
+  $grado=$_POST["grado"];
 
 //Guardamos a la tabla
-  mysqli_query($conexion,"insert into estudiante(documento,password,nombre,apellidos,sexo,fecha,expedicion,lugar,direccion,barrio,eps,rh,acudiente) values ($documento,'$password','$nombre','$apellidos','$sexo','$fecha','$expedicion','$lugar','$direccion','$barrio','$eps','$rh',$acudiente)") or die("Problemas al insertar".mysqli_error($conexion));
-  echo " Se guardaron los cambios ";
-  header("location:configestudiantes.php");
+  mysqli_query($conexion,"insert into estudiante(documento,password,nombre,apellidos,sexo,fecha,expedicion,lugar,direccion,barrio,eps,rh,mama,papa,grado) values ($documento,'$password','$nombre','$apellidos','$sexo','$fecha','$expedicion','$lugar','$direccion','$barrio','$eps','$rh',$mama,$papa,$grado)") or die("Problemas al insertar".mysqli_error($conexion));
+  echo'<script type="text/javascript">
+    alert("Se Guardaron los Cambios");
+    window.location.href="mostrarestu.php";
+    </script>';
+
 ?>
 

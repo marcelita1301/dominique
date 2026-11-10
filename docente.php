@@ -11,9 +11,13 @@
   $barrio=$_POST["barrio"];
   $eps=$_POST["eps"];
   $rh=$_POST["rh"];
+  $grado=$_POST["grado"];
 //Guardamos a la tabla
-  mysqli_query($conexion,"insert into docente(documento,password,nombre,apellidos,sexo,fecha,lugar,direccion,barrio,eps,rh) values ($documento,'$password','$nombre','$apellidos','$sexo','$fecha','$lugar','$direccion','$barrio','$eps','$rh')") or die("Problemas al insertar".mysqli_error($conexion));
-  echo " Se guardaron los cambios ";
-     header("location:mostrardatosdocente.php");
+  mysqli_query($conexion,"insert into docente(documento,password,nombre,apellidos,sexo,fecha,lugar,direccion,barrio,eps,rh,grado) values ($documento,'$password','$nombre','$apellidos','$sexo','$fecha','$lugar','$direccion','$barrio','$eps','$rh',$grado)") or die("Problemas al insertar".mysqli_error($conexion));
+  echo'<script type="text/javascript">
+  alert("Se Guardaron los Cambios");
+  window.location.href="mostrardoce.php";
+  </script>';
+
 ?>
 

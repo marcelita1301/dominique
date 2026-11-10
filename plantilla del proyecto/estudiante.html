@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Estudiante</title>
+  <link rel="stylesheet" href="forn.css">
+</head>
+
+<body>
+
+
+<div class="signupFrm">
+    <form action="estudiante.php" class="form" method="post">
+      <h1 class="title">Estudiantes</h1>
+	  <div class="inputContainer">
+        <input type="number" class="input" name="documento" placeholder=" " required>
+        <label for="" class="label">Documento</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="password" class="input" name="password" placeholder=" " required>
+        <label for="" class="label">Contraseña</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="text" class="input" name="nombre" placeholder=" " required>
+        <label for="" class="label">Nombre</label>
+      </div>
+	  <div class="inputContainer">
+        <input type="text" class="input" name="apellidos" placeholder=" " required>
+        <label for="" class="label">Apellidos</label>
+      </div>
+	  <div class="inputContainer">
+		<select name="sexo" class="input" required>
+					<option disabled hidden selected>Sexo</option>
+					<option>Femenino</option>
+					<option>Masculino</option>
+					<option>No binario</option>
+				  </select>
+				<label for="" class="label">Sexo </label>
+			  </div>
+			  <div class="inputContainer">
+				<input type="date" class="input" name="fecha" placeholder=" " required>
+				<label for="" class="label">Fecha de nacimiento</label>
+			  </div>
+			  <div class="inputContainer">
+				<input type="number" class="input" name="grado" placeholder=" " required>
+						<label for="" class="label">Grado</label>
+					  </div>
+					  <div class="inputContainer">
+						<input type="number" class="input" name="acudiente" placeholder=" " required>
+						<label for="" class="label">Documento del acudiente</label>
+					  </div>	  	  
+      <input type="submit" class="submitBtn" value="Enviar">
+    </form>
+  </div>
+</body>
+</head>
+</html>
